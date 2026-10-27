@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Usage: 01_global_genetics.sh munge|h2|rg|gnova TRAIT [N]
+# Usage: 01_global_genetics.sh munge|h2|rg|gnova TRAIT [P_COLUMN]
 # Inputs are harmonized GWAS files under $CRC_DATA_DIR/gwas and LDSC sumstats under $CRC_DATA_DIR/ldsc.
 mode=${1:?mode}; trait=${2:?trait}; pcol=${3:-pval}
 : "${CRC_DATA_DIR:?}" "${LDSC_DIR:?}" "${LDSC_LD:?}"

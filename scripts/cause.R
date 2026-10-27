@@ -22,7 +22,7 @@ for (exposure_file in exposure_files) {
   dir.create(analysis_dir, showWarnings = FALSE, recursive = TRUE)
 
   tryCatch({
-    # Step 1: Format Data for CAUSE ####
+    # Harmonize the two summary-statistic files and attach source P values.
     X1 <- fread(exposure_file)
     X2 <- fread(outcome_file)
     X <- gwas_merge(
@@ -34,27 +34,23 @@ for (exposure_file in exposure_files) {
       A2_cols = c("A2", "A2")
     )
 
-    # 添加 p 列；gwas_merge 函数不具有 pval 参数
     X1_snp_p <- X1[, .(SNP, pval)]
     X2_snp_p <- X2[, .(SNP, p)]
     colnames(X1_snp_p)[2] <- "p1"
     colnames(X2_snp_p)[2] <- "p2"
     colnames(X1_snp_p)[1] <- "snp"
     colnames(X2_snp_p)[1] <- "snp"
-    # Newer CAUSE versions may add p1/p2 during gwas_merge. Remove those
-    # before reproducing the senior script's joins from the source GWAS.
+    # Some CAUSE versions already add p1/p2; use the source GWAS values.
     X$p1 <- NULL
     X$p2 <- NULL
     a1 <- left_join(X, X1_snp_p, by = c("snp"))
     a2 <- left_join(a1, X2_snp_p, by = c("snp"))
     X <- a2
 
-    # Step 2: Calculate nuisance parameters ####
     set.seed(100)
     varlist <- with(X, sample(snp, size = 1000000, replace = FALSE))
     params <- est_cause_params(X, varlist)
 
-    # Step 3: LD Pruning ####
     dat <- X[, c("snp", "p1")]
     colnames(dat)[1:2] <- c("rsid", "pval")
     dat <- mutate(dat, pval = as.numeric(dat$pval))
@@ -68,10 +64,8 @@ for (exposure_file in exposure_files) {
     X_clump <- X[X$snp %in% expo_clump$rsid, ]
     top_vars <- X_clump$snp
 
-    # Step 4: Fit CAUSE ####
     res <- cause(X = X, variants = top_vars, param_ests = params, force = TRUE)
 
-    # Step 5: Look at and save Results ####
     saveRDS(res, file = file.path(analysis_dir, paste0(analysis_name, "_cause_result.rds")))
     write.table(
       res$elpd,

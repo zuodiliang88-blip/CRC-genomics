@@ -4,9 +4,6 @@ eur_bfile <- required_path("EUR_BFILE")
 library(MRlap)
 library(data.table)
 
-#========================
-# 路径和固定参数
-#========================
 exp_name <- commandArgs(trailingOnly = TRUE)[1]
 if (is.na(exp_name) || !nzchar(exp_name)) stop("Usage: Rscript scripts/mrlap.R TRAIT_ID")
 result_dir <- file.path(out_root, "MRlap", exp_name)
@@ -23,9 +20,6 @@ hm3_path <- required_path("HM3_SNPLIST")
 
 bfile_ref <- eur_bfile
 
-#========================
-# 读取 outcome
-#========================
 outcome <- fread(outcome_file, data.table = FALSE)
 outcome_name <- "colorectalcancer_pmid36539618"
 
@@ -56,9 +50,6 @@ outcome <- outcome[
 ]
 outcome <- outcome[!duplicated(outcome$snp), ]
 
-#========================
-# 读取 exposure
-#========================
 exposure <- fread(exposure_file, data.table = FALSE)
 
 setnames(
@@ -88,9 +79,6 @@ exposure <- exposure[
 ]
 exposure <- exposure[!duplicated(exposure$snp), ]
 
-#========================
-# MRlap
-#========================
 res <- MRlap(
   exposure = exposure,
   exposure_name = exp_name,
@@ -111,9 +99,6 @@ res <- MRlap(
   verbose = FALSE
 )
 
-#========================
-# 整理并保存结果
-#========================
 MRcorr <- res$MRcorrection
 MRcorr <- MRcorr[!names(MRcorr) %in% "IVs"]
 
