@@ -1,0 +1,15 @@
+# Study inputs, output, and private machine configuration
+data/
+results/
+*.rds
+*.RData
+*.mat
+*.sumstats.gz
+*.txt.gz
+*.tsv.gz
+*.xlsx
+*.pdf
+*.png
+*.log
+config/paths.local.sh
+.DS_Store

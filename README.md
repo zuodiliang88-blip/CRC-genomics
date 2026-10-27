@@ -37,6 +37,7 @@ bash scripts/02_supergnova.sh BMI_GCST009004 697734
 Rscript scripts/04_supergnova_fdr.R
 Rscript scripts/twas_prepare.R
 bash scripts/03_twas.sh BMI_GCST009004_addchrBP_GRCh37
+bash scripts/03_twas.sh CRC
 Rscript scripts/05_shared_twas.R
 Rscript scripts/mr_bidirectional.R
 Rscript scripts/cause.R
