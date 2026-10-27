@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Copy to a private shell file, edit the paths, then source it.
+export CRC_DATA_DIR=/path/to/data
+export CRC_GWAS=/path/to/colorectal_cancer_gwas.txt.gz
+export PLINK_BIN=/path/to/plink
+export EUR_BFILE=/path/to/1000G_EUR_reference_prefix
+export LDSC_DIR=/path/to/ldsc
+export LDSC_LD=/path/to/eur_w_ld_chr/
+export HM3_SNPLIST=/path/to/w_hm3.snplist
+export GNOVA_PY=/path/to/GNOVA/gnova.py
+export GNOVA_BFILE=/path/to/eur_chr@_SNPmaf5
+export SUPERGNOVA_PY=/path/to/SUPERGNOVA/supergnova.py
+export SUPERGNOVA_BFILE=/path/to/eur_chr@_SNPmaf5
+export SUPERGNOVA_PARTITION=/path/to/eur_chr@.bed
+export FUSION_R=/path/to/FUSION.assoc_test.eQTLGen.PseudoVal.v1.R
+export FUSION_WEIGHTS=/path/to/eQTLGen.eQTL.pos
+export FUSION_WEIGHTS_DIR=/path/to/weights_parent_directory
+export FUSION_LD=/path/to/1000G.EUR.
+export FUSION_PSEUDOVAL=/path/to/Pseudovalidation.txt
+export EQTLGEN_DIR=/path/to/eqtlgen/by_gene
+export EQTLGEN_MAF=/path/to/eqtlgen_1000G_EUR.frq
+export MATLAB_BIN=/path/to/matlab
+export PLEIOFDR_ROOT=/path/to/pleiofdr
+export FDR_CLUMP_PY=/path/to/sumstats_candidate_FDR.py
+export FDR_REF_BFILE_CHR=/path/to/1000G_chr@

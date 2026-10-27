@@ -1,0 +1,14 @@
+Trait	rg_sign
+BMI_GCST009004_addchrBP_GRCh37	1
+Body_fat_percentage_GCST90468160_GRCh37	1
+WHR_GCST008996_addchrBP_GRCh37	1
+Smoking_initiation_GSCAN_SmkInit_2022_EUR_GRCh37	1
+Smoking_cessation_GSCAN_SmkCes_2022_EUR_GRCh37	1
+Cigarettes_per_day_GSCAN_CigDay_2022_EUR_GRCh37	1
+Educational_attainment_pmid35361970_GRCh37	-1
+ISEI_occupational_score_GCST90446160_GRCh37	-1
+Household_income_GCST90566699_pmid40360725_GRCh37	-1
+MVPA_GCST90104341_GRCh37	-1
+Age_at_smoking_initiation_GSCAN_AgeSmk_2022_EUR_GRCh37	-1
+Red_wine_GCST90132987_GRCh37	-1
+White_wine_GCST90132986_GRCh37	-1

@@ -1,0 +1,22 @@
+# Replace paths and phenotype names for each CRC-factor pair.
+reffile=/path/to/ref9545380_1kgPhase3eur_LDr2p1.mat
+refinfo=/path/to/9545380.ref
+traitfolder=
+traitfile1=/path/to/factor.mat
+traitname1=FACTOR
+traitfiles={'/path/to/CRC.mat'}
+traitnames={'CRC'}
+outputdir=/path/to/results
+mlibrary=/path/to/pleiofdr
+stattype=conjfdr
+fdrthresh=0.05
+randprune=true
+randprune_n=500
+randprune_gc=true
+reset_pruneidx=true
+exclude_chr_pos=[6 25119106 33854733; 8 7200000 12500000]
+mafthresh=0.005
+exclude_ambiguous_snps=true
+perform_gc=true
+use_standard_gc=false
+onscreen=false
